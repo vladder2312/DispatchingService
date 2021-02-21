@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">DispatchingService</string>
+    <string name="title_requests">Заявки</string>
+    <string name="title_account">Аккаунт</string>
+</resources>
