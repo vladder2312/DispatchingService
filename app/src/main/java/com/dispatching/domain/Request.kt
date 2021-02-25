@@ -5,6 +5,8 @@ import java.util.*
 
 data class Request(
     val id: String,
+    val client: Client,
+    val workers: List<Worker>,
     val type: Type,
     val address: Address,
     val phone: String,
