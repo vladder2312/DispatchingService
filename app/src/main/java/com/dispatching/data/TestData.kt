@@ -14,7 +14,14 @@ class TestData {
                 "1",
                 "Иванов Андрей Сергеевич",
                 "89053441232",
-                "ivanov1324"
+                "ivanov1324",
+                Client.Address(
+                    "Воронеж",
+                    "20-летия Октября",
+                    44,
+                    null,
+                    12
+                )
             ),
             mutableListOf(
                 Worker(
@@ -26,8 +33,6 @@ class TestData {
                 )
             ),
             Request.Type.CHECKING_COUNTERS,
-            Request.Address("Воронеж", "20-летия Октября", 44, null, 12),
-            "89512234455",
             1100.0f,
             "",
             Date(121, 0, 13, 12, 30, 5),
@@ -39,7 +44,8 @@ class TestData {
                 "1",
                 "Иванов Андрей Сергеевич",
                 "89053441232",
-                "ivanov1324"
+                "ivanov1324",
+                Client.Address("Воронеж", "Космонавтов", 13, "2", 49)
             ),
             mutableListOf(
                 Worker(
@@ -58,8 +64,6 @@ class TestData {
                 )
             ),
             Request.Type.ELECTRIC,
-            Request.Address("Воронеж", "Космонавтов", 13, "2", 49),
-            "89204123311",
             2500.0f,
             "Замена части проводки",
             Date(121, 1, 22, 16, 55, 12),
@@ -71,7 +75,8 @@ class TestData {
                 "2",
                 "Кузнецов Иван Анатольевич",
                 "89515667483",
-                "qwerty1928"
+                "qwerty1928",
+                Client.Address("Воронеж", "Пушкина", 76, "у", 219)
             ),
             mutableListOf(
                 Worker(
@@ -83,8 +88,6 @@ class TestData {
                 )
             ),
             Request.Type.WELDING,
-            Request.Address("Воронеж", "Пушкина", 76, "у", 219),
-            "89991232332",
             3700.0f,
             "Замена батареи в зале. Отменено заказчиком.",
             Date(121, 1, 25, 9, 12, 59),

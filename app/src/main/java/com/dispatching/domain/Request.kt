@@ -8,8 +8,6 @@ data class Request(
     val client: Client,
     val workers: List<Worker>,
     val type: Type,
-    val address: Address,
-    val phone: String,
     val price: Float,
     val description: String,
     val createDate: Date,
@@ -52,21 +50,6 @@ data class Request(
         },
         DONE {
             override fun toString() = "Готово"
-        }
-    }
-
-    data class Address(
-        val city: String,
-        val street: String,
-        val house: Int,
-        val corpus: String?,
-        val room: Int
-    ) : Serializable {
-        override fun toString(): String {
-            var text = "$city, ул. $street, д. $house, "
-            if (corpus != null) text += "к. $corpus, "
-            text += "кв. $room"
-            return text
         }
     }
 
