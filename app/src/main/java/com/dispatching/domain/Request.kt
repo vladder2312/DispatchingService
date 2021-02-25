@@ -8,6 +8,7 @@ data class Request(
     val type: Type,
     val address: Address,
     val phone: String,
+    val price: Float,
     val description: String,
     val createDate: Date,
     val state: State
@@ -65,5 +66,9 @@ data class Request(
             text += "кв. $room"
             return text
         }
+    }
+
+    override fun toString(): String {
+        return "№$id: $type"
     }
 }
