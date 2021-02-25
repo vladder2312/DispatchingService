@@ -2,4 +2,8 @@
     <string name="app_name">DispatchingService</string>
     <string name="title_requests">Заявки</string>
     <string name="title_account">Аккаунт</string>
+    <string name="req_address">Адрес:</string>
+    <string name="req_phone">Телефон:</string>
+    <string name="req_price">Цена:</string>
+    <string name="req_description">Описание:</string>
 </resources>
