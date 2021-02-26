@@ -2,9 +2,7 @@ package com.dispatching.ui.requests
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.recyclerview.widget.GridLayoutManager
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
@@ -32,6 +30,11 @@ class RequestsFragment : MvpAppCompatFragment(), RequestsView {
         return inflater.inflate(R.layout.requests_fragment, container, false)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.requests_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViews()
@@ -44,6 +47,7 @@ class RequestsFragment : MvpAppCompatFragment(), RequestsView {
     }
 
     private fun initViews() {
+        activity?.title = resources.getString(R.string.title_requests)
         requests_recycler.layoutManager = GridLayoutManager(context, GridLayoutManager.VERTICAL)
         requests_recycler.adapter = requestsAdapter
         requests_swipe_refresh.isRefreshing = true

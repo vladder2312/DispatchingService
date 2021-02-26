@@ -30,7 +30,7 @@ class RequestsController(
             request = data
             datetime.text = data.createDate.toLocaleString()
             name.text = "№ ${data.id}: ${data.type}"
-            address.text = data.address.toString()
+            address.text = data.client.address.toString()
             state.text = data.state.toString()
         }
     }

@@ -22,7 +22,7 @@ class RequestsPresenter : MvpPresenter<RequestsView>() {
 
     fun loadRequests() {
         model.requests.clear()
-        val disposable = testData.requests
+        val disposable = testData.getRequests()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe {
