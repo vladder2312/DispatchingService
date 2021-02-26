@@ -37,4 +37,8 @@ data class Worker(
             }
         }
     }
+
+    override fun toString(): String {
+        return fullName+" ("+role+")"
+    }
 }

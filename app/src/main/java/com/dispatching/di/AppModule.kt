@@ -1,11 +1,14 @@
 package com.dispatching.di
 
+import android.accounts.Account
 import android.content.Context
 import com.dispatching.data.TestData
+import com.dispatching.domain.User
 import com.dispatching.ui.account.AccountFragment
 import com.dispatching.ui.requests.RequestsFragment
 import dagger.Module
 import dagger.Provides
+import javax.inject.Singleton
 
 @Module
 class AppModule(private val context: Context) {
@@ -26,7 +29,14 @@ class AppModule(private val context: Context) {
     }
 
     @Provides
+    @Singleton
     fun provideTestData(): TestData {
         return TestData()
+    }
+
+    @Provides
+    @Singleton
+    fun provideAccount(): User {
+        return provideTestData().users[0]
     }
 }
