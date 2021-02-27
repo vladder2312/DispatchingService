@@ -1,3 +1,7 @@
 package com.dispatching.ui.request
 
-class RequestModel
+import com.dispatching.domain.Request
+
+class RequestModel {
+    lateinit var request: Request
+}

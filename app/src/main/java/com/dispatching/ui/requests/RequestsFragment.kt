@@ -35,6 +35,15 @@ class RequestsFragment : MvpAppCompatFragment(), RequestsView {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.add_request_item -> {
+                //TODO('Обработка нажатия на "Добавить"')
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         initViews()
@@ -62,7 +71,7 @@ class RequestsFragment : MvpAppCompatFragment(), RequestsView {
 
     private fun startRequestActivity(request: Request) {
         val intent = Intent(context, RequestActivity::class.java)
-        intent.putExtra("request", request)
+        intent.putExtra("request_id", request.id)
         startActivity(intent)
     }
 }

@@ -11,4 +11,8 @@
     <string name="acc_edit">Редактировать</string>
     <string name="profile">Профиль</string>
     <string name="workers">Исполнители</string>
+    <string name="create">Создать</string>
+    <string name="edit">Изменить</string>
+    <string name="done">Готово</string>
+    <string name="cancel">Отмена</string>
 </resources>

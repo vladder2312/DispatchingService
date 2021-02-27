@@ -2,6 +2,7 @@ package com.dispatching.di
 
 import android.accounts.Account
 import android.content.Context
+import android.util.Log
 import com.dispatching.data.TestData
 import com.dispatching.domain.User
 import com.dispatching.ui.account.AccountFragment

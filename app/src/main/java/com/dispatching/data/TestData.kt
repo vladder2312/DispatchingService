@@ -81,69 +81,77 @@ class TestData {
         )
     )
 
-    fun getRequests(): Observable<Request> {
-        return Observable.just(
-            Request(
-                "123",
-                users[0] as Client,
-                mutableListOf(
-                    users[3] as Worker
-                ),
-                Request.Type.CHECKING_COUNTERS,
-                1100.0f,
-                "",
-                Date(121, 0, 13, 12, 30, 5),
-                Request.State.PROCESSED
+    val requests = arrayListOf(
+        Request(
+            "123",
+            users[0] as Client,
+            mutableListOf(
+                users[3] as Worker
             ),
-            Request(
-                "124",
-                users[1] as Client,
-                mutableListOf(
-                    users[4] as Worker,
-                    users[5] as Worker
-                ),
-                Request.Type.ELECTRIC,
-                2500.0f,
-                "Замена части проводки",
-                Date(121, 1, 22, 16, 55, 12),
-                Request.State.ACCEPTED
+            Request.Type.CHECKING_COUNTERS,
+            1100.0f,
+            "",
+            Date(121, 0, 13, 12, 30, 5),
+            Request.State.PROCESSED
+        ),
+        Request(
+            "124",
+            users[1] as Client,
+            mutableListOf(
+                users[4] as Worker,
+                users[5] as Worker
             ),
-            Request(
-                "125",
-                users[2] as Client,
-                mutableListOf(
-                    users[6] as Worker
-                ),
-                Request.Type.WELDING,
-                3700.0f,
-                "Замена батареи в зале. Отменено заказчиком.",
-                Date(121, 1, 25, 9, 12, 59),
-                Request.State.CANCELED
-            )
+            Request.Type.ELECTRIC,
+            2500.0f,
+            "Замена части проводки",
+            Date(121, 1, 22, 16, 55, 12),
+            Request.State.ACCEPTED
+        ),
+        Request(
+            "125",
+            users[2] as Client,
+            mutableListOf(
+                users[6] as Worker
+            ),
+            Request.Type.WELDING,
+            3700.0f,
+            "Замена батареи в зале. Отменено заказчиком.",
+            Date(121, 1, 25, 9, 12, 59),
+            Request.State.CANCELED
         )
-    }
+    )
 
-    fun getClient(id: String): Single<Client?> {
-        return Single.just(
-            users.filter { it is Client }
-                .find { it.id == id } as Client
-        )
-    }
+    fun getRequests() = Observable.fromIterable(requests)
 
-    fun editClient(client : Client) {
-        var old : Client
-        users.forEach {
-            if (it.id == client.id) {
-                old = it as Client
+    fun getWorkers() = Observable.fromIterable(users.filter { it is Worker })
+
+    fun getClient(id: String) = Single.just(
+        users.filter { it is Client }
+            .find { it.id == id } as Client
+    )
+
+    fun getWorker(id: String) = Single.just(
+        users.filter { it is Worker }
+            .find { it.id == id } as Worker
+    )
+
+    fun getRequest(id: String) = Single.just(
+        requests.find { it.id == id }
+    )
+
+    fun editClient(client: Client) {
+        for (i in  0 until users.size) {
+            if (users[i].id == client.id) {
+                users[i] = client
             }
         }
-        old = client
     }
 
-    fun getWorker(id: String): Single<Worker> {
-        return Single.just(
-            users.filter { it is Worker }
-                .find { it.id == id } as Worker
-        )
+    fun editRequest(request: Request) {
+        for (i in 0 until requests.size) {
+            if (requests[i].id == request.id) {
+                requests[i] = request
+            }
+        }
     }
 }

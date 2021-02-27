@@ -8,8 +8,8 @@ data class Request(
     val client: Client,
     val workers: List<Worker>,
     val type: Type,
-    val price: Float,
-    val description: String,
+    var price: Float,
+    var description: String,
     val createDate: Date,
     val state: State
 ) : Serializable {
@@ -55,5 +55,9 @@ data class Request(
 
     override fun toString(): String {
         return "№$id: $type"
+    }
+
+    fun clone(): Request {
+        return Request(id, client, workers, type, price, description, createDate, state)
     }
 }

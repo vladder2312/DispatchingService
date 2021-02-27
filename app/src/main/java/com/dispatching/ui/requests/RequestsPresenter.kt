@@ -1,5 +1,6 @@
 package com.dispatching.ui.requests
 
+import android.util.Log
 import com.arellomobile.mvp.InjectViewState
 import com.arellomobile.mvp.MvpPresenter
 import com.dispatching.App
@@ -22,6 +23,7 @@ class RequestsPresenter : MvpPresenter<RequestsView>() {
 
     fun loadRequests() {
         model.requests.clear()
+        Log.d("MYLOG32", "Using: "+testData)
         val disposable = testData.getRequests()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
