@@ -4,6 +4,7 @@ import com.dispatching.domain.Client
 import com.dispatching.domain.Request
 import com.dispatching.domain.User
 import com.dispatching.domain.Worker
+import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.Single
 import java.util.*
@@ -140,7 +141,7 @@ class TestData {
     )
 
     fun editClient(client: Client) {
-        for (i in  0 until users.size) {
+        for (i in 0 until users.size) {
             if (users[i].id == client.id) {
                 users[i] = client
             }
@@ -153,5 +154,9 @@ class TestData {
                 requests[i] = request
             }
         }
+    }
+
+    fun addRequest(request: Request) {
+        requests.add(request)
     }
 }

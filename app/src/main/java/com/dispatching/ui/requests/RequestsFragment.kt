@@ -8,6 +8,7 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.dispatching.R
 import com.dispatching.domain.Request
+import com.dispatching.ui.add_request.AddRequestActivity
 import com.dispatching.ui.request.RequestActivity
 import kotlinx.android.synthetic.main.requests_fragment.*
 import ru.surfstudio.android.easyadapter.EasyAdapter
@@ -38,7 +39,7 @@ class RequestsFragment : MvpAppCompatFragment(), RequestsView {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.add_request_item -> {
-                //TODO('Обработка нажатия на "Добавить"')
+                startAddRequestAcitivity()
             }
         }
         return super.onOptionsItemSelected(item)
@@ -72,6 +73,11 @@ class RequestsFragment : MvpAppCompatFragment(), RequestsView {
     private fun startRequestActivity(request: Request) {
         val intent = Intent(context, RequestActivity::class.java)
         intent.putExtra("request_id", request.id)
+        startActivity(intent)
+    }
+
+    private fun startAddRequestAcitivity() {
+        val intent = Intent(context, AddRequestActivity::class.java)
         startActivity(intent)
     }
 }

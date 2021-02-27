@@ -20,21 +20,24 @@ class RequestPresenter : MvpPresenter<RequestView>() {
         App.appComponent.inject(this)
     }
 
-    fun updateRequest(req: Request) {
-        model.request = req
-        testData.editRequest(req)
+    fun updateRequest() {
+        testData.editRequest(model.request)
     }
 
     fun setRequest(req_id: String) {
         val disposable = testData.getRequest(req_id)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnSuccess {
-                if (it != null) {
-                    model.request = it
-                    viewState.setRequest(it)
+            .subscribe(
+                {
+                    if (it != null) {
+                        model.request = it
+                        viewState.setRequest(it)
+                    }
+                }, {
+                    viewState.showSnackBar(it.localizedMessage!!)
                 }
-            }
+            )
     }
 
     fun phoneChanged(phone: String) {

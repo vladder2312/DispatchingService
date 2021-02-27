@@ -5,4 +5,5 @@ import com.dispatching.domain.Request
 
 interface RequestView : MvpView {
     fun setRequest(request: Request)
+    fun showSnackBar(message: String)
 }

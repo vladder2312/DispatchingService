@@ -7,12 +7,12 @@ data class Request(
     val id: String,
     val client: Client,
     val workers: List<Worker>,
-    val type: Type,
+    var type: Type,
     var price: Float,
     var description: String,
     val createDate: Date,
     val state: State
-) : Serializable {
+) : Serializable, Cloneable {
 
     enum class Type : Serializable {
         ELECTRIC {
@@ -57,7 +57,7 @@ data class Request(
         return "№$id: $type"
     }
 
-    fun clone(): Request {
+    override fun clone(): Request {
         return Request(id, client, workers, type, price, description, createDate, state)
     }
 }
