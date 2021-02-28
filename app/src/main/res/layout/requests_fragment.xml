@@ -5,19 +5,26 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="16dp">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/requests_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tabTextAppearance="@style/TabLayoutStyle" />
+
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/requests_swipe_refresh"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/requests_tabs">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/requests_recycler"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/requests_pager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/requests_tabs" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

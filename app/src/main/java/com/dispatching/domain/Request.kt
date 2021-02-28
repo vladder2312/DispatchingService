@@ -46,7 +46,7 @@ data class Request(
             override fun toString() = "Принято"
         },
         CANCELED {
-            override fun toString() = "Отколонено"
+            override fun toString() = "Отменено"
         },
         DONE {
             override fun toString() = "Готово"

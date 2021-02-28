@@ -23,7 +23,7 @@ class RequestsPresenter : MvpPresenter<RequestsView>() {
 
     fun loadRequests() {
         model.requests.clear()
-        Log.d("MYLOG32", "Using: "+testData)
+        Log.d("MYLOG32", "Using: " + testData)
         val disposable = testData.getRequests()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -31,5 +31,22 @@ class RequestsPresenter : MvpPresenter<RequestsView>() {
                 model.requests.add(it)
                 viewState.setData(model.requests)
             }
+    }
+
+    fun pageSelected(position: Int) {
+        model.selectedPage = position
+        when (position) {
+            0 -> viewState.setData(model.requests)
+            1 -> viewState.setData(
+                model.requests.filter {
+                    it.state == Request.State.PROCESSED || it.state == Request.State.ACCEPTED
+                } as MutableList<Request>
+            )
+            2 -> viewState.setData(
+                model.requests.filter {
+                    it.state == Request.State.CANCELED || it.state == Request.State.DONE
+                } as MutableList<Request>
+            )
+        }
     }
 }
